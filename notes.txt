@@ -1,0 +1,120 @@
+1. Create Laravel Project
+	composer create-project --prefer-dist laravel/laravel jetpackmall
+
+2. Install Bootstrap4 with auth in laravel 7
+	-> composer require laravel/ui
+	-> php artisan ui bootstrap --auth
+	-> npm install
+	-> npm run dev
+
+Model
+======
+	jetpackmall >> app >> User.php
+
+View
+=====
+	jetpackmall >> resources >> views
+
+Controller
+=========
+	jetpackmall >> app >> Http >> Controllers
+
+Route
+======
+	jetpackmall >> routes >> web.php
+
+Create Controller
+------------------
+	-> php artisan make:controller TestOneController
+	( plain Controller | no function )
+
+	-> php artisan make:controller TestTwoController -r
+
+	-> php artisan make:controller TestThreeController --resource
+
+	auto write CRUD function name
+
+Route List
+-----------
+
+	php artisan route:list
+
+Template Cut
+---------------
+- Template Folder Copy
+
+- Paste in
+	jetpackmall >. public
+
+- create controller
+	php artisan make:controller CategoryController -r
+
+
+- keys to your database
+	.env
+		-> DB_DATABASE | DB_USERNAME | DB_PASSWORD
+
+- Database Migration
+	php artisan make:migration create_townships_table
+
+- Define String Length
+	app >> provider >> AppServiceProvider.php
+
+- migrate
+	php artisan migrate
+
+
+
+
+
+
+
+Carbon
+--------
+composer require nesbot/carbon
+
+
+
+
+
+
+
+
+composer update
+
+Cache
+-------
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+
+View Clear
+------------
+storage >> framework >> views
+
+Model
+--------
+-> php artisan make:model Category
+-> php artisan make:model Subcategory
+-> php artisan make:model Brand
+-> php artisan make:model Item
+-> php artisan make:model Order
+-> php artisan make:model Orderdetail
+
+
+
+csrf
+cross site request forgery
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+@font-face
+{
+	font-family: 'all';
+	src: url('../fonts/Questrial-Regular.ttf');
+}
+
+@font-face
+{
+	font-family: 'main';
+	src: url('../fonts/LexendDeca-Regular.ttf');
+}
+
+*{
+	font-family: all;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+	font-family: main;
+}
+
+.userprofile{
+	width: 30px;
+	height: 30px;
+}
+
+.subtitle{
+	    background-image: linear-gradient(to bottom right, #0F2027, #203A43, #2C5364) !important;
+}
+
+.list-group-item.active{
+	background-color: #33646c !important;
+    border-color: #33646c !important;
+}
+.list-group-item.active a{
+    color: #fff !important;
+}
