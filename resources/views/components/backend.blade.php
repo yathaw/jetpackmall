@@ -22,10 +22,8 @@
         <!-- Summernote -->
         <link rel="stylesheet" type="text/css" href="{{ asset('summernote/summernote-bs4.css') }}">
 
-
         <!-- Multiple Image Upload & Preview CSS-->
         <link rel="stylesheet" type="text/css" href="{{ asset('multipleimageupload/image-uploader.min.css') }}">
-
         
 
     </head>
@@ -65,9 +63,13 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="page-login.html">
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="icofont-logout"></i>
                             Logout
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </a>
                     </li>
                   </ul>
@@ -80,10 +82,12 @@
         <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 
         <aside class="app-sidebar">
-            <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
+            <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="{{ asset(Auth::user()->profile) }}" style="width: 50px; height: 50px; object-fit: cover;" alt="User Image">
                 <div>
-                  <p class="app-sidebar__user-name">John Doe</p>
-                  <p class="app-sidebar__user-designation">Frontend Developer</p>
+                    <p class="app-sidebar__user-name"> {{ Auth::user()->name }} </p>
+                    <p class="app-sidebar__user-designation"> 
+                        {{ Auth::user()->roles()->pluck('name')[0] }} 
+                    </p>
                 </div>
             </div>
             
@@ -177,6 +181,7 @@
         <!-- Multiple Image Upload & Preview JS -->
         <script src="{{ asset('multipleimageupload/image-uploader.min.js') }}"></script>
 
+
         <script type="text/javascript">$('#sampleTable').DataTable();</script>
 
 
@@ -192,10 +197,11 @@
           }
         </script>
 
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
 
         @yield("script_content")
+
+
+
 
     </body>
 </html>

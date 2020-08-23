@@ -24,8 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('phone');
             $table->longText('address');
-            $table->foreignId('township_id')
-                    ->nullable();
+            $table->foreignId('township_id')->nullable();
             $table->string('status')->default(0);
             $table->rememberToken();
             $table->timestamps();

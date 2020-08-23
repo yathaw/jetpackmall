@@ -54,7 +54,7 @@
                                         $photo = $photos[0];
                                     @endphp
                                     <tr>
-                                        <td> 1. </td>
+                                        <td> {{ $i++ }}. </td>
                                         <td> 
                                             <div class="d-flex no-block align-items-center">
                                                 <div class="mr-3">

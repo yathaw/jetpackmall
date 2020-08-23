@@ -21,7 +21,8 @@ class CreateOrdersTable extends Migration
             $table->longText('note');
             $table->string('status');
             $table->foreignId('user_id')
-                ->references('id')->on('users')
+                ->references('id')
+                ->on('users')
                 ->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();

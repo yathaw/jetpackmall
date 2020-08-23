@@ -17,9 +17,15 @@ class CreateOrderdetailsTable extends Migration
             $table->id();
             $table->string('qty');
             $table->foreignId('item_id')
-                    ->references('id')->on('items')
+                    ->references('id')
+                    ->on('items')
                     ->onDelete('cascade');
-            $table->foreignId('order_id');
+                    
+            $table->foreignId('order_id')
+                    ->references('id')
+                    ->on('orders')
+                    ->onDelete('cascade');
+
             $table->softDeletes();
             $table->timestamps();
         });

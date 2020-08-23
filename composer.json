@@ -15,7 +15,9 @@
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
-        "nesbot/carbon": "^2.38"
+        "nesbot/carbon": "^2.38",
+        "rabbit-converter/rabbit-php": "dev-master",
+        "spatie/laravel-permission": "^3.16"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

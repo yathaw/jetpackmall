@@ -12,10 +12,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Frontend
+Route::get('/', 'FrontendController@index')->name('index');
+Route::get('promotion','FrontendController@promotion')->name('promotion'); 
+Route::get('brand/{id}', 'FrontendController@brand')->name('brand');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('subcategory/{id}', 'FrontendController@subcategory')->name('subcategory');
+
+Route::get('detail/{id}', 'FrontendController@detail')->name('detail');
+Route::get('cart', 'FrontendController@cart')->name('cart');
+Route::post('order', 'FrontendController@order')->name('order');
+Route::get('ordersuccess', 'FrontendController@ordersuccess')->name('ordersuccess');
+
+
 
 Auth::routes();
 

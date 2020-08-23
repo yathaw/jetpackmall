@@ -29,7 +29,26 @@ h6{
 }
 
 .subtitle{
-	    background-image: linear-gradient(to bottom right, #0F2027, #203A43, #2C5364) !important;
+	background-image: linear-gradient(to bottom right, #0F2027, #203A43, #2C5364) !important;
+}
+
+.brandOne{
+	background-image: linear-gradient(to bottom right, #E0EAFC, #CFDEF3) !important;
+}
+
+.brandTwo{
+	background-image: linear-gradient(to bottom right, #83a4d4, #b6fbff) !important;
+	height: 250px;
+}
+
+.brandThree{
+	background-image: linear-gradient(to bottom right, #eacda3, #d6ae7b) !important;
+}
+
+.brandLogo{
+	width: 120px;
+	height: 90px ;
+	object-fit: cover;
 }
 
 .list-group-item.active{

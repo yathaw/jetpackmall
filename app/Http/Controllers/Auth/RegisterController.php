@@ -8,6 +8,10 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Auth;
+
 
 class RegisterController extends Controller
 {
@@ -53,6 +57,10 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'township' => ['required'],
+            'phone'    => ['required'],
+            'township' => ['township'],
+            'address' => ['required'],
         ]);
     }
 
@@ -69,5 +77,34 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function register(Request $request)
+    {  
+        $name = $request->name;
+        $email = $request->email;
+        $password = $request->password;
+        $phone = $request->phone;
+        $township = $request->township;
+        $address = $request->address;
+        $profile = 'images/user/emoji.png';
+
+        $user = User::create([
+            'name'      =>  $request->name,
+            'profile'   =>  $profile,
+            'email'     =>  $email,
+            'password'  =>  Hash::make($password),
+            'phone'     =>  $phone,
+            'address'   =>  $address,
+            'township_id' =>  $township
+        ]);
+        
+        $user->assignRole('customer');
+
+        Auth::login($user);
+
+        return redirect('/');
+
+
     }
 }

@@ -23,11 +23,13 @@ class CreateItemsTable extends Migration
             $table->longText('description')->nullable();
 
             $table->foreignId('subcategory_id')
-                    ->references('id')->on('subcategories')
+                    ->references('id')
+                    ->on('subcategories')
                     ->onDelete('cascade');
 
             $table->foreignId('brand_id')
-                    ->references('id')->on('brands')
+                    ->references('id')
+                    ->on('brands')
                     ->onDelete('cascade');
 
             $table->softDeletes();
