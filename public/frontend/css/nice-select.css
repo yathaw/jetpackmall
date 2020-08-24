@@ -12,7 +12,7 @@
   font-size: 14px;
   font-weight: normal;
   height: 42px;
-  line-height: 40px;
+  line-height: 28px;
   outline: none;
   padding-left: 18px;
   padding-right: 30px;
@@ -25,7 +25,8 @@
       -ms-user-select: none;
           user-select: none;
   white-space: nowrap;
-  width: auto; }
+  width: 100%; 
+}
   .nice-select:hover {
     border-color: #dbdbdb; }
   .nice-select:active, .nice-select.open, .nice-select:focus {

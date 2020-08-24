@@ -85,9 +85,9 @@
             <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="{{ asset(Auth::user()->profile) }}" style="width: 50px; height: 50px; object-fit: cover;" alt="User Image">
                 <div>
                     <p class="app-sidebar__user-name"> {{ Auth::user()->name }} </p>
-                    <p class="app-sidebar__user-designation"> 
-                        {{ Auth::user()->roles()->pluck('name')[0] }} 
-                    </p>
+<p class="app-sidebar__user-designation"> 
+    {{ Auth::user()->roles()->pluck('name')[0] }} 
+</p>
                 </div>
             </div>
             

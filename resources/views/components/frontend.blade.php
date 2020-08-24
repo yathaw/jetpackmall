@@ -59,7 +59,6 @@
         <div class="humberger__menu__widget">
 
             @guest
-
                 <div class="header__top__right__auth">
                     <a href="{{ route('register') }}"><i class="fa fa-user"></i> Register </a>
                 </div>
@@ -67,10 +66,7 @@
                 <div class="header__top__right__auth">
                     <a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a>
                 </div>
-
-
             @else
-
                 <div class="header__top__right__language">
                     <img src="{{ asset(Auth::user()->profile) }}" alt="" class="userprofile">
                     <div> {{ Auth::user()->name }}'s Account </div>
@@ -79,7 +75,7 @@
                         <li><a href="#"> Profile </a></li>
                         <li><a href="#"> Order </a></li>
                         <li>
-                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Sign Out 
+                            <a href="javascript:void(0)" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Sign Out 
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -89,7 +85,6 @@
 
                     </ul>
                 </div>
-
             @endif
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -171,22 +166,22 @@
 
                             @else
 
-                            <div class="header__top__right__language">
-                                <img src="{{ asset(Auth::user()->profile) }}" alt="" class="userprofile">
-                                <div> {{ Auth::user()->name }} Account </div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#"> Profile </a></li>
-                                    <li><a href="#"> Order </a></li>
-                                    <li>
-                                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Sign Out </a>
+<div class="header__top__right__language">
+    <img src="{{ asset(Auth::user()->profile) }}" alt="" class="userprofile">
+    <div> {{ Auth::user()->name }} Account </div>
+    <span class="arrow_carrot-down"></span>
+    <ul>
+        <li><a href="#"> Profile </a></li>
+        <li><a href="#"> Order </a></li>
+        <li>
+            <a href="javascript:void(0)" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Sign Out </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        </li>
+    </ul>
+</div>
 
                             @endif
                             
@@ -383,7 +378,11 @@
         <script>
             var deliveryprice = "{{ Auth::user()->township->price}}";
         </script>
+    @else
 
+        <script>
+            var deliveryprice = "0";
+        </script>
 
     @endif
 

@@ -7,9 +7,7 @@
 		    $deliveryPrice = Auth::user()->township->price;
 
 	    @endphp
-
-
-	@endif
+    @endif
 
 	<!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg subtitle">
@@ -56,13 +54,24 @@
                         <h5>Cart Total</h5>
                         <ul>
                             <li> Subtotal <span class="shoppingcartTotal"></span></li>
+                            
+                            @if(Auth::check())
                             <li> Delivery <small> ( {{ $deliveryTownship }} ) </small> 
                             	<span> {{ number_format($deliveryPrice) }} Ks </span>
                             </li>
+                            @endif
 
                             <li>Total <span class="totality"></span></li>
                         </ul>
-                        <a href="javascript:void(0)" class="primary-btn checkoutBtn">PROCEED TO CHECKOUT</a>
+                        @if(Auth::check())
+
+                            <a href="javascript:void(0)" class="primary-btn checkoutBtn">PROCEED TO CHECKOUT</a>
+
+                        @else
+
+                            <a href="{{ route('login') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
+
+                        @endif
                     </div>
                 </div>
             </div>

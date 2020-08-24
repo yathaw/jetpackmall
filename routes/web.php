@@ -56,7 +56,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Backend
 
-Route::group(['prefix' => 'backside', 'as' => 'backside.'], function(){
+Route::group(['middleware' => 'role:admin', 'prefix' => 'backside', 'as' => 'backside.'], function(){
 
 	Route::resource('/category','CategoryController');
 	Route::resource('/subcategory','SubcategoryController');
