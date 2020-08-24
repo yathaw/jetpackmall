@@ -88,9 +88,8 @@ class RegisterController extends Controller
         $township = $request->township;
         $address = $request->address;
         $profile = 'images/user/emoji.png';
-
         $user = User::create([
-            'name'      =>  $request->name,
+            'name'      =>  $name,
             'profile'   =>  $profile,
             'email'     =>  $email,
             'password'  =>  Hash::make($password),
@@ -98,13 +97,21 @@ class RegisterController extends Controller
             'address'   =>  $address,
             'township_id' =>  $township
         ]);
-        
         $user->assignRole('customer');
-
         Auth::login($user);
-
         return redirect('/');
-
-
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

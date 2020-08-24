@@ -21,6 +21,7 @@ Route::get('subcategory/{id}', 'FrontendController@subcategory')->name('subcateg
 
 Route::get('detail/{id}', 'FrontendController@detail')->name('detail');
 Route::get('cart', 'FrontendController@cart')->name('cart');
+
 Route::post('order', 'FrontendController@order')->name('order');
 Route::get('ordersuccess', 'FrontendController@ordersuccess')->name('ordersuccess');
 

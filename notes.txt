@@ -103,8 +103,66 @@ Model
 
 
 
-csrf
-cross site request forgery
+csrf - cross site request forgery
+
+===================================================
+
+REST - REpresentational State Transfer
+API - Application Programming Interface
+
+six REST constraints ( ကန့်သတ် )
+---------------------
+i)	 Client–server architecture: Your REST API interface should follow a client-server architecture,
+ii)  Stateless: Your REST API interface should be stateless,
+iii) Cacheable: Your REST API interface should be cacheable,
+iv)	 Uniform interface: Your REST API should have a uniform interface,
+v)	 Layered system ,
+vi)	 Code on demand.
+
+REST API Resource
+------------------
+	a resource refers to an object that has a type and data.
+	It has also a group of associated methods that can operate on it. These are standard methods that correspond to the standard HTTP GET, POST, PUT and DELETE methods.
+
+REST API Method
+----------------
+	allows you to interface your web application with other systems like mobile devices and web browsers via a set of methods that correspond to CRUD (create, read, update, delete) operations. 
+HTTP GET: This REST API method can be mapped to an action to get/retrieve the resource data,
+HTTP POST: This REST API method can be mapped to an action to create a new resources,
+HTTP PUT: This REST API method can be mapped to an action to update existing resources,
+HTTP DELETE: This REST API method can be mapped to an action delete the resource,
+HTTP PATCH: This REST API method can be mapped to an action to make partial update on a resource.
+
+Create API Rest with Laravel 7 Passport Authentication
+------------------------------------------------------
+
+1. Install Laravel Passport Package
+	composer require laravel/passport
+
+2. Run migration
+	php artisan migrate
+
+3. Generate keys
+	php artisan passport:install
+
+4. Passport config
+	i) app >> User.php
+	ii) app >> Providers >> AuthServiceProvider.php
+	iii) config >> auth.php
+
+5. Create Controller
+	php artisan make:controller Api/BrandController --api
+
+6. Create Resource
+		When building APIs with Laravel, it is recommended to use the apiResource() method while defining resourceful routes, this will generate only API specific routes (index, store, show, update and destroy). Unlike when you use the resource() method, which will in addition to generating API specific routes, also generate create and edit routes, which aren’t needed when building an API.
+
+
+	php artisan make:resource BrandResource
+
+7. 
+
+
+
 
 
 

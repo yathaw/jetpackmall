@@ -55,17 +55,11 @@
                                     <select class="form-control" name="township">
                                         <option> Choose Township </option>
 
-                                        @foreach($data[3] as $township)
+                                        @foreach($data[2] as $township)
                                             <option value="{{ $township->id }}"> {{ $township->name }} </option>
                                         @endforeach
 
                                     </select>
-
-                                    @error('township')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>                                    
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
                         </div>
