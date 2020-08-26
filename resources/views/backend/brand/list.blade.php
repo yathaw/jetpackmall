@@ -68,7 +68,7 @@
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <button type="button" class="btn btn-outline-danger" >
+                                                <button type="submit" class="btn btn-outline-danger" >
                                                     <i class="icofont-close icofont-1x"></i>
                                                     
                                                 </button>

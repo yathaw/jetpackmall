@@ -63,6 +63,13 @@ Route::group(['middleware' => 'role:admin', 'prefix' => 'backside', 'as' => 'bac
 	Route::resource('/subcategory','SubcategoryController');
 	Route::resource('/brand','BrandController');
 	Route::resource('/item','ItemController');
+
+	Route::get('/order','BackendController@order')->name('order');
+
+
+	Route::get('/customer','BackendController@customer')->name('customer');
+	Route::get('customer/delete/{id}', 'BackendController@customerdelete')->name('customer/delete');
+
 });
 
 

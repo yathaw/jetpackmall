@@ -159,7 +159,10 @@ Create API Rest with Laravel 7 Passport Authentication
 
 	php artisan make:resource BrandResource
 
-7. 
+7. CRUD
+
+8. authentication
+	php artisan make:controller Api/AuthController
 
 
 

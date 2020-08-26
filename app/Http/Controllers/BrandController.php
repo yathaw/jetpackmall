@@ -167,7 +167,6 @@ class BrandController extends Controller
 
         $brand->delete();
 
-        return redirect()->route('backside.brand.index')->with("successMsg", "New Brand is DELETED in your data");
-        // return response()->json(['success'=>'Category <b> DELETED </b> successfully.']);
+        return redirect()->route('backside.brand.index')->with("successMsg", "Existing Brand is DELETED in your data");
     }
 }

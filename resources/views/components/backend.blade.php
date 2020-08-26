@@ -103,7 +103,7 @@
                 </li>
 
                 <li>
-                    <a class="app-menu__item" href="dashboard.html">
+                    <a class="app-menu__item {{ Request::segment(2) ==='order' ? 'active' :'' }}" href="{{ route('backside.order') }}">
                         <i class="app-menu__icon icofont-prestashop"></i>
                         <span class="app-menu__label">
                             Order
@@ -112,7 +112,7 @@
                 </li>
 
                 <li>
-                    <a class="app-menu__item" href="dashboard.html">
+                    <a class="app-menu__item {{ Request::segment(2) ==='customer' ? 'active' :'' }}" href="{{ route('backside.customer') }}">
                         <i class="app-menu__icon icofont-users-social"></i>
                         <span class="app-menu__label">
                             Customer

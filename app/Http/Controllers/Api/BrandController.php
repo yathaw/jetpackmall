@@ -25,10 +25,9 @@ class BrandController extends Controller
         $response = [
             'status'  => $status,
             'success' => true,
-            'data'    => $result,
             'message' => $message,
+            'data'    => $result,
         ];
-
 
         return response()->json($response, 200);
 
@@ -43,15 +42,26 @@ class BrandController extends Controller
     public function store(Request $request)
     {
 
-        $validator = $request->validate([
+        $validator = Validator::make($request->all(), [ 
             'name' => 'required|string|max:255|unique:brands',
             'logo' => 'required|mimes:jpeg,bmp,png,jpg'
         ]);
 
-        dd($validator);
+        if ($validator->fails()) {
+            $message = 'Validation Error.';
+            $status = 400;
 
-        if ($validator) {
+            $response = [
+                'status'  => $status,
+                'success' => false,
+                'message' => $message,
+                'data'    => $validator->errors(),
+            ];
 
+            return response()->json($response, 400);
+        }
+        else
+        {
             $name = $request->name;
             $photo = $request->logo;
 
@@ -77,24 +87,11 @@ class BrandController extends Controller
             $response = [
                 'status'  => $status,
                 'success' => true,
-                'data'    => $result,
                 'message' => $message,
+                'data'    => $result,
             ];
 
             return response()->json($response, 200);
-        }
-        else{
-            $message = 'Validation Error.';
-            $status = 400;
-
-            $response = [
-                'status'  => $status,
-                'success' => false,
-                'data'    => $validator->errors(),
-                'message' => $message,
-            ];
-
-            return response()->json($response, 400);
         }
     }
 
@@ -130,8 +127,8 @@ class BrandController extends Controller
             $response = [
                 'status'  => $status,
                 'success' => true,
-                'data'    => $result,
                 'message' => $message,
+                'data'    => $result,
             ];
 
 
@@ -152,7 +149,86 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [ 
+            'name' => 'required|string|max:255',
+            'logo' => 'sometimes|mimes:jpeg,bmp,png,jpg'
+        ]);
+
+        if ($validator->fails()) {
+            $message = 'Validation Error.';
+            $status = 400;
+
+            $response = [
+                'status'  => $status,
+                'success' => false,
+                'message' => $message,
+                'data'    => $validator->errors(),
+            ];
+
+            return response()->json($response, 400);
+        }
+        else
+        {
+            $brand = Brand::find($id);
+
+            if (is_null($brand)) {
+
+                $status = 400;
+                $message = 'Brand not found.';
+
+                $response = [
+                    'status'  => $status,
+                    'success' => false,
+                    'message' => $message,
+                ];
+
+                return response()->json($response, 404);
+
+            }
+            else{
+
+                $name = $request->name;
+                $photo = $request->logo;
+
+                // File Upoload
+                if ($request->hasFile('photo')) {
+                    $imageName = time().'.'.$photo->extension();  
+               
+                    $photo->move(public_path('images/brand'), $imageName);
+
+                    $filepath = 'images/brand/'.$imageName;
+
+                    $oldphoto = $brand->logo;
+
+                    if(\File::exists(public_path($oldphoto))){
+                        \File::delete(public_path($oldphoto));
+                    }
+                }
+                else{
+                    $filepath = $brand->logo;
+
+                }
+
+                // Data insert
+                $brand->name = $name;
+                $brand->logo = $filepath;
+                $brand->save();
+                
+
+                $status = 200;
+                $result = new BrandResource($brand);
+                $message = 'Brand updated successfully.';
+
+                $response = [
+                    'status'  => $status,
+                    'success' => true,
+                    'message' => $message,
+                    'data'    => $result,
+                ];
+
+                return response()->json($response, 200);
+            }
+        }
     }
 
     /**
@@ -163,6 +239,42 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $brand = Brand::find($id);
+
+        if (is_null($brand)) {
+
+            $status = 400;
+            $message = 'Brand not found.';
+
+            $response = [
+                'status'  => $status,
+                'success' => false,
+                'message' => $message,
+            ];
+
+            return response()->json($response, 404);
+        }
+        else{
+
+            $oldphoto = $brand->logo;
+
+            if(\File::exists(public_path($oldphoto))){
+                \File::delete(public_path($oldphoto));
+            }
+
+            $brand->delete();
+
+            $status = 200;
+            $message = 'Brand deleted successfully.';
+
+            $response = [
+                'status'  => $status,
+                'success' => true,
+                'message' => $message,
+            ];
+
+
+            return response()->json($response, 200);
+        }
     }
 }
