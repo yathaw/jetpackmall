@@ -36,7 +36,6 @@ Create Controller
 
 Route List
 -----------
-
 	php artisan route:list
 
 Template Cut

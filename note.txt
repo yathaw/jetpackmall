@@ -1,0 +1,86 @@
+Model
+======
+	jetpackmall >> app >> User.php
+
+View
+=====
+	jetpackmall >> resources >> views
+
+Controller
+=========
+	jetpackmall >> app >> Http >> Controllers
+
+Route
+======
+	jetpackmall >> routes >> web.php
+
+------------------------------------------------------
+
+1. Create Laravel Project
+	composer create-project --prefer-dist laravel/laravel jetpackmall
+
+2. Install Bootstrap4 with auth in laravel 7
+	-> composer require laravel/ui
+	-> php artisan ui bootstrap --auth
+	-> npm install
+	-> npm run dev
+
+3.	Create Controller
+	-> php artisan make:controller CategoryController -r
+
+4.	Define Route
+		jetpackmall >> routes >> web.php
+	->	Route::resource('/category','CategoryController');
+
+5. Template Cut
+	->	extract sb-admin.zip in public folder
+	->	rename sb-admin.... to backend
+
+	->	create components folder in views
+			jetpackmall >> resources >> views
+
+	->	create backend.blade.php in components folder
+			jetpackmall >> resources >> views >> components
+
+	->	all code copy from jetpackmall >> public >> backend >> tables.html
+	->	code paste to jetpackmall >> resources >> views >> components >> backend.blade.php
+
+	->	add "asset" css-link, js-script in backend.blade.php
+	->	{{ $slot }}  in duplicate part of backend.blade.php
+
+	->	create category folder in views
+			jetpackmall >> resources >> views
+
+	->	create list.blade.php in category folder
+			jetpackmall >> resources >> views >> category
+
+	->	write return view('category.list'); in CategoryController@index function
+
+6. keys to your database
+	.env
+		-> DB_DATABASE | DB_USERNAME | DB_PASSWORD
+
+7. create database in phpmyadmin
+	databasename => jetpackmall
+
+8.	Database Migration
+
+	->	php artisan make:migration create_categories_table
+	->	php artisan make:migration create_subcategories_table	 
+	->	php artisan make:migration create_brands_table	
+	->	php artisan make:migration create_items_table
+	->	php artisan make:migration create_orders_table	 
+	->	php artisan make:migration create_orderdetails_table
+
+9.	Define Column in migration
+	jetpackmall >> database >> migrations
+
+10.	Define String Length
+	app >> provider >> AppServiceProvider.php
+
+11. migrate
+	->	php artisan migrate
+
+12. laravel development server
+	->	php artisan serve	 
+
